@@ -1,0 +1,10 @@
+import SignOutButton from "@/app/components/auth/SignOutButton";
+
+export default async function AdminPage() {
+  return(
+    <div>
+      <h1>Admin Dashboard</h1>
+      <SignOutButton />
+    </div>
+  );
+}
