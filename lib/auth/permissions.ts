@@ -1,16 +1,12 @@
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-
 import { Role, getDashboardByRole } from "./roles";
+import { getAuthSession } from "./sessions";
 
 export async function requireSession(requiredRole?: Role) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const session = await getAuthSession();
 
   if (!session) {
-    redirect("/signIn");
+    redirect("/login");
   }
 
   const userRole = session.user.role as Role;
